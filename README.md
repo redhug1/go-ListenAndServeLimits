@@ -26,6 +26,8 @@ The memory allocations were sampled once every 50 with runtime.ReadMemStats() re
 
 The problem with reduced sampling is that it might miss the true peak allocation, so the values gathered can be used for indication ONLY.
 
+Each PDF contains the details of the test configuration.
+
 ## e-47.pdf  (no control of memory allocations, 137MB peak)
 This shows memory allocations with no limits applied to the number of go routines and thus no idea of how many were active at one time - a problem due to 'Unbounded parallelism which is rarely a good idea' as detailed in the second paragraph on page 241 of 'The Go Programming Language' - 2016 printed edition.
 
