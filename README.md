@@ -28,10 +28,14 @@ The memory allocations were sampled once every 50 requests to try to minimise th
 The problem with reduced sampling is that it might miss the true peak allocation, so the values gathered can be used for indication ONLY.
 
 ## e-47.pdf  (no control of memory allocations, 137MB peak)
-This shows memory allocations with no limits applied to the number of go routines and thus no idea of how many were active at one time.
+This shows memory allocations with no limits applied to the number of go routines and thus no idea of how many were active at one time - a problem due to 'Unbounded parallelism' as detailed in the second paragraph on page 241 of 'The Go Programming Language' - 2016 printed edition.
 
 ## e-45.pdf  (good memory profile, 67MB peak)
 This shows memory allocations with a maximum of 1200 go routines active and responding with a 503 when no more go routines can be launched.
 
 ## e-46.pdf  (smallest memory profile, 35MB)
-This shows memory allocations with a maximum of 1200 go routines active and not responding with a 503 when at limit.
+This shows memory allocations with a maximum of 1200 go routines active and not responding with a 503 when at the limit of 1200 go routines.
+
+.
+
+The value of 1200 for the maximum number of go routines was arrived at by trial and error and is only applicable to the web site being tested.
